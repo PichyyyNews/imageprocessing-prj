@@ -56,3 +56,9 @@ python download_data.py
 python src/eda/run_eda.py
 ```
 > รายงานฉบับเต็มจะถูกบันทึกไว้ที่ [`reports/eda/eda_report.md`](reports/eda/eda_report.md)
+
+### 5. รัน Image Preprocessing Pipeline
+```bash
+python src/preprocessing/run_preprocessing.py
+```
+> ข้อมูลที่ผ่านการปรับขนาด Letterbox $640 \times 640$ และแปลงพิกัด Bounding Box จะถูกบันทึกไว้ที่ `data/processed/` และรายงานผลฉบับเต็มจะถูกบันทึกไว้ที่ [`reports/preprocessing/preprocessing_report.md`](reports/preprocessing/preprocessing_report.md)
