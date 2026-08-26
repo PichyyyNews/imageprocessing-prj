@@ -7,13 +7,14 @@
 imageprocessing-prj/
 ├── data/                      # ที่เก็บข้อมูลรูปภาพ (ถูก ignore โดย Git)
 │   ├── raw/                   # ข้อมูลดิบที่ดาวน์โหลดจาก Kaggle
-│   └── processed/             # ข้อมูลที่ผ่านการ Preprocess
+│   ├── processed/             # ข้อมูลที่ผ่านการ Preprocess (Letterbox 640x640)
+│   └── split/                 # ข้อมูลที่แบ่ง Train (70%) / Val (15%) / Test (15%)
 ├── reports/                   # รายงานผลการวิเคราะห์และทดลอง (.md)
 │   ├── eda/                   # รายงาน Exploratory Data Analysis
 │   ├── preprocessing/         # รายงาน Image Preprocessing
 │   └── splitting/             # รายงาน Data Splitting
 ├── src/                       # Source code หลักของโปรเจกต์
-│   ├── data/                  # จัดการดาวน์โหลดและเตรียมข้อมูล
+│   ├── data/                  # จัดการดาวน์โหลดและแบ่งชุดข้อมูล (Stratified Split)
 │   ├── eda/                   # การสำรวจและวิเคราะห์ข้อมูลเชิงลึก
 │   └── preprocessing/         # Pipeline ประมวลผลภาพและปรับพิกัด Annotation
 ├── .env.example               # ตัวอย่างไฟล์ Environment Variables
@@ -62,3 +63,9 @@ python src/eda/run_eda.py
 python src/preprocessing/run_preprocessing.py
 ```
 > ข้อมูลที่ผ่านการปรับขนาด Letterbox $640 \times 640$ และแปลงพิกัด Bounding Box จะถูกบันทึกไว้ที่ `data/processed/` และรายงานผลฉบับเต็มจะถูกบันทึกไว้ที่ [`reports/preprocessing/preprocessing_report.md`](reports/preprocessing/preprocessing_report.md)
+
+### 6. รัน Multi-Label Stratified Data Splitting
+```bash
+python src/data/run_split.py
+```
+> ข้อมูลจะถูกแบ่งเป็น Train (70%), Val (15%), Test (15%) พร้อมกระจายตัวอย่างครบทั้ง 21 คลาส จัดเก็บไว้ที่ `data/split/` และรายงานผลฉบับเต็มจะถูกบันทึกไว้ที่ [`reports/splitting/data_splitting_report.md`](reports/splitting/data_splitting_report.md)

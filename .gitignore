@@ -1,7 +1,7 @@
-﻿# Data and Datasets (prevent images and labels from being committed)
-data/
-datasets/
-trafic_data/
+# Data and Datasets (prevent images and labels from being committed)
+/data/
+/datasets/
+/trafic_data/
 *.jpg
 *.jpeg
 *.png
